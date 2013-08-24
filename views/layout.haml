@@ -1,0 +1,30 @@
+!!!
+%html
+  %head 
+    %title Vermont Center for Occupational Rehabilitation
+    %link(rel="stylesheet" href="http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css")
+    %link(rel="stylesheet" href="stylesheets/vcor.css")
+    %script{:type => "text/javascript", :src => "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"}
+    %script{:type => "text/javascript", :src => "javascripts/vcor.js"}
+  %body
+    #wrapper
+      #headwrap
+        #header
+          %h1 Vermont Center for Occupational Rehabilitation
+        #nav
+          %ol
+            %li 
+              %a(href="/") Home
+            %li 
+              %a(href="directions") Directions
+            %li 
+              %a(href="services") Services
+            %li 
+              %a(href="staff") Staff
+            %li 
+              %a(href="forms") New Patient Forms
+      #content
+        =yield 
+      -#=haml :sidebar, :layout=>false 
+      #footer
+
