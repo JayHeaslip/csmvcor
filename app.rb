@@ -6,33 +6,24 @@ get '/' do
   haml :index
 end
 
-get '*/directions' do 
+get '/:site/directions' do 
   haml :directions
+end
+
+get '/:site/articles' do 
+  haml :"#{params[:site]}/articles", :layout => :"#{params[:site]}/layout"
+end
+
+get '/:site/forms' do 
+  haml :"#{params[:site]}/forms", :layout => :"#{params[:site]}/layout"
 end
 
 get '/:site/services' do 
   haml :"#{params[:site]}/services", :layout => :"#{params[:site]}/layout"
 end
 
-##get 'csm/forms' do 
-##  haml :forms
-##end
-##
-##get 'vcor/services' do 
-##  haml :vcorservices
-##end
-##
-##get 'vcor/articles' do 
-##  haml :vcorarticles
-##end
-##
-##get 'vcor/staff' do 
-##  haml :staff
-##end
-##
-##get 'vcor/forms' do 
-##  haml :forms
-##end
-
+get '/:site/staff' do 
+  haml :"#{params[:site]}/staff", :layout => :"#{params[:site]}/layout"
+end
 
 
