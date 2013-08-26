@@ -1,3 +1,9 @@
-%p We are located at 67 Lincoln Street, Essex Junction, VT
+%p We are located at 67 Lincoln Street, Essex Junction, VT.  The VCOR office is on the first floor and Champlain Sports Medicine is on the second floor.
 
-#map-canvas
+%br
+
+%form{:action => "http://maps.google.com/maps", :method => "get", :target => "_blank"}
+  %p{:class => 'directions'} Enter your starting address:
+  %input{:type => "text", :name => "saddr", :size => 40}
+  %input{:type => "hidden", :name => "daddr", :value => "67 Lincoln Street, Essex Junction, VT 05452"}
+  %input{:type => "submit", :value => "Get Directions"}

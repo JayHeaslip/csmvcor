@@ -1,6 +1,6 @@
 
 html {
-    font-family: helvetica
+    font: "Liberations Sans";
 }
 #headwrap {
     background: url("../images/bg.jpg") repeat-x scroll left top;
@@ -42,7 +42,6 @@ html {
 
 h2{
 	font-size:130%;
-	font-family:sans-serif;
 }
 
 #content{
@@ -67,11 +66,21 @@ h1{
 	font-size:150%;
 }
 
+p {
+  font-size: 1em;
+  text-indent: 2em;
+  line-height: 150%;
+  margin-top: 8px;
+}
+
+p.directions {
+  text-indent: 0;
+}
+
 #footer{
 	clear:both;
-	background-color:#c0cde0;
+	background: #c2cde1;
 	font-size:75%;
-	font-family:sans-serif;
 	color:#333;
 	border-top:solid 5px #6c80c7;
 }

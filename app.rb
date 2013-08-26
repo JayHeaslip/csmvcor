@@ -7,7 +7,7 @@ get '/' do
 end
 
 get '/:site/directions' do 
-  haml :directions
+  haml :directions, :layout => :"#{params[:site]}/layout"
 end
 
 get '/:site' do 
