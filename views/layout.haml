@@ -10,21 +10,16 @@
     #wrapper
       #headwrap
         #header
+          %h1 Champlain Sports Medicine &
           %h1 Vermont Center for Occupational Rehabilitation
-        #nav
-          %ol
-            %li 
-              %a(href="/") Home
-            %li 
-              %a(href="directions") Directions
-            %li 
-              %a(href="services") Services
-            %li 
-              %a(href="staff") Staff
-            %li 
-              %a(href="forms") New Patient Forms
+          #address
+            %p 67 Lincoln Street, Essex Junction, Vermont   05452
+            %p Tel 802-878-9700  Fax 802-878-9966
       #content
-        =yield 
+        %p 
+          %a{href: '/csm'}Champlain Sports Medicine 
+        %p
+          %a{href: '/vcor'}Vermont Center for Occupational Rehabilitation
       -#=haml :sidebar, :layout=>false 
       #footer
 

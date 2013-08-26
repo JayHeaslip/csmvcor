@@ -10,6 +10,16 @@ get '/:site/directions' do
   haml :directions
 end
 
+get '/:site' do 
+  if params[:site] == 'csm'
+    haml :'csm/index', :layout => :'csm/layout'
+  elsif params[:site] == 'vcor'
+    haml :'vcor/index', :layout => :'vcor/layout'
+  else
+    haml :index
+  end
+end
+
 get '/:site/articles' do 
   haml :"#{params[:site]}/articles", :layout => :"#{params[:site]}/layout"
 end
