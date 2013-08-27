@@ -11,7 +11,6 @@ html {
     padding-left: 20px;
     padding-top: 50px;
     padding-bottom: 50px;
-    
 }
 
 #address {
@@ -27,68 +26,12 @@ html {
 }
 
 #nav {
-    margin-top: 20px;
+    margin-top: 40px;
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
     padding: 5px;
     -moz-text-decoration-color: currentColor;
-}
-
-#header>h1{
-    margin-top: 10px;
-    font-size:200%;
-}
-
-h2{
-	font-size:130%;
-}
-
-#content{
-	margin:12px 0;
-	float:left;
-	min-height: 200px;
-}
-
-#strut {
-    min-height: 600px;
-}
-
-#side_bar{
-	margin:12px 0;
-	width :30%;
-	float:right;
-	clear:none;
-	background:#222;
-}
-
-h1{
-	font-size:150%;
-}
-
-p {
-  font-size: 1em;
-  text-indent: 2em;
-  line-height: 150%;
-  margin-top: 8px;
-}
-
-p.directions {
-  text-indent: 0;
-}
-
-#footer{
-	clear:both;
-	background: #c2cde1;
-	font-size:75%;
-	color:#333;
-	border-top:solid 5px #6c80c7;
-}
-
-#map-canvas{
-    margin: 0;
-    padding: 0;
-    height: 400px;
 }
 
 #nav ul {
@@ -116,3 +59,43 @@ p.directions {
 #nav a:hover {
     background: #828de1;
 }
+
+#header>h1{
+    margin-top: 10px;
+    font-size:200%;
+}
+
+h2{
+	font-size:130%;
+}
+
+#content{
+	margin:12px 0;
+	float:left;
+	min-height: 200px;
+}
+
+#strut {
+    min-height: 600px;
+}
+
+#footer{
+	clear:both;
+	background: #c2cde1;
+	font-size:75%;
+	color:#333;
+	border-top:solid 5px #6c80c7;
+}
+
+
+h1{
+	font-size:150%;
+}
+
+p {
+  font-size: 1em;
+  text-indent: 0em;
+  line-height: 150%;
+  margin-top: 8px;
+}
+
