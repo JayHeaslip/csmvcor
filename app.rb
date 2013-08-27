@@ -3,7 +3,7 @@ require 'sinatra'
 require 'haml'
 
 get '/' do 
-  haml :index
+  haml :layout
 end
 
 get '/:site/directions' do 
