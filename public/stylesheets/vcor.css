@@ -6,7 +6,12 @@ html {
     background: url("../images/bg.jpg") repeat-x scroll left top;
 }
 
+#logo {
+    float: left;
+}
+
 #header {
+    font-family: "Bodoni MT", Didot, "Didot LT STD", "Book Antiqua", Garamond, "Times New Roman", serif;
     width: 95%;
     padding-left: 20px;
     padding-top: 50px;
