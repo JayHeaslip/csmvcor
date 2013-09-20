@@ -19,12 +19,20 @@ html {
 #header {
     font-family: "Bodoni MT", Didot, "Didot LT STD", "Book Antiqua", Garamond, "Times New Roman", serif;
     width: 95%;
+    color: #606D8F;
     padding-left: 20px;
     padding-top: 50px;
     padding-bottom: 50px;
 }
 
+#name {
+    font-size:150%;
+    text-align: center;
+    margin-top: 15px;
+    float: left;
+}
 #address {
+    color: #000000;
     font-size: 90%;
     padding: 10px;
     float: right;
@@ -73,7 +81,6 @@ html {
 
 #header>h1{
     font-weight: bold;
-    color: #606D8F;
     margin-top: 10px;
     font-size:200%;
 }
