@@ -25,6 +25,14 @@ html {
     padding-bottom: 50px;
 }
 
+#header h1 {
+   padding-left: 50px;
+}
+
+#header p {
+   padding-left: 50px;
+}
+
 #name {
     font-size:150%;
     text-align: center;
@@ -40,7 +48,7 @@ html {
 }
 
 #wrapper{
-    width:66%;
+    width: 932px;
     margin:auto;
 }
 
@@ -49,7 +57,7 @@ html {
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
-    padding: 5px;
+    padding: 0px;
     -moz-text-decoration-color: currentColor;
 }
 
@@ -59,7 +67,7 @@ html {
     list-style: none;
     padding-top: 6px;
     padding-bottom: 5px;
-    background: #c2cde1;
+    background: #ddddff;
     width: 100%;
 }
 
@@ -70,7 +78,7 @@ html {
 #nav a {
     text-align:center;
     color: #000000;
-    background: #c2cde1;
+    background: #ddddff;
     padding: 5px 15px 5px 15px;
     text-decoration:none;
 }

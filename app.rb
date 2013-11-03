@@ -5,7 +5,7 @@ require 'haml'
 set :prawn, { :page_layout => :landscape }
 
 get '/' do 
-  haml :layout
+  haml :'vcor/index', :layout => :'vcor/layout'
 end
 
 get '/:site/directions' do 
