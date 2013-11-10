@@ -94,13 +94,40 @@ html {
 }
 
 h2{
-	font-size:130%;
+    font-size:130%;
 }
 
+#content h2 {
+    color: #606D8F;
+    padding-top: 12px;
+    font-size:130%;
+    font-weight: bold;
+    border-bottom: 2px solid #606D8F;
+}
+
+#content h3 {
+    padding-top: 12px;
+    font-size:120%;
+    font-weight: bold;
+}
+
+#content h4{
+    padding-top: 5px;
+    font-size:110%;
+    font-weight: bold;
+}
+
+#content p{
+    font-size:90%;
+}
+
+
 #content{
-	margin:12px 0;
-	float:left;
-	min-height: 200px;
+    font-family: "Bodoni MT", Didot, "Didot LT STD", "Book Antiqua", Garamond, "Times New Roman", serif;
+    width: 95%;
+    margin:12px 0;
+    float:left;
+    min-height: 200px;
 }
 
 #strut {
@@ -121,9 +148,8 @@ h1{
 }
 
 p {
-  font-size: 1em;
   text-indent: 0em;
-  line-height: 150%;
+  line-height: 120%;
   margin-top: 8px;
 }
 
