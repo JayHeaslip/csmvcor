@@ -100,25 +100,28 @@ h2{
 #content h2 {
     color: #606D8F;
     padding-top: 12px;
-    font-size:130%;
+    font-size:150%;
     font-weight: bold;
     border-bottom: 2px solid #606D8F;
 }
 
 #content h3 {
     padding-top: 12px;
-    font-size:120%;
+    font-size:140%;
     font-weight: bold;
 }
 
 #content h4{
     padding-top: 5px;
-    font-size:110%;
+    font-size:130%;
     font-weight: bold;
 }
 
 #content p{
-    font-size:90%;
+  font-size:110%;
+  text-indent: 0em;
+  line-height: 120%;
+  margin-top: 8px;
 }
 
 
@@ -147,9 +150,4 @@ h1{
 	font-size:150%;
 }
 
-p {
-  text-indent: 0em;
-  line-height: 120%;
-  margin-top: 8px;
-}
 
