@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'haml'
-##require 'pony'
+require 'pp'
 ##require 'sinatra/base'
 ##require 'rack-flash'
 
@@ -17,10 +17,12 @@ get '/' do
 end
 
 get '/vcor/index' do 
+  @submenu = "index"
   haml :'vcor/index', :layout => :'vcor/layout'
 end
 
 get '/:site/directions' do 
+  @submenu = "directions"
   haml :directions, :layout => :"#{params[:site]}/layout"
 end
 
@@ -35,23 +37,36 @@ get '/:site' do
 end
 
 get '/:site/articles' do 
+  @submenu = "articles"
   haml :"#{params[:site]}/articles", :layout => :"#{params[:site]}/layout"
+end
+
+get '/:site/patients' do 
+  @submenu = "patients"
+  haml :"#{params[:site]}/patients", :layout => :"#{params[:site]}/layout"
 end
 
 get '/:site/forms' do 
   haml :"#{params[:site]}/forms", :layout => :"#{params[:site]}/layout"
 end
 
-get '/:site/render_form' do 
-  send_file 'public/files/new_patient_form.pdf', :type => 'application/pdf'
+get '/:site/render_form/:form' do 
+  send_file "public/files/#{params[:form]}", :type => 'application/pdf'
 end
 
 get '/:site/services' do 
+  @submenu = "services"
   haml :"#{params[:site]}/services", :layout => :"#{params[:site]}/layout"
 end
 
 get '/:site/staff' do 
+  @submenu = "staff"
   haml :"#{params[:site]}/staff", :layout => :"#{params[:site]}/layout"
+end
+
+get '/:site/faq' do 
+  @submenu = "faq"
+  haml :"#{params[:site]}/faq", :layout => :"#{params[:site]}/layout"
 end
 
 get '/:site/contact' do

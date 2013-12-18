@@ -2,38 +2,68 @@
 %html
   %head 
     %title Vermont Center for Occupational Rehabilitation
-    %link(rel="stylesheet" href="http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css")
-    %link(rel="stylesheet" href="../stylesheets/vcor.css")
-    %script{:type => "text/javascript", :src => "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"}
-    %script{:type => "text/javascript", :src => "javascripts/vcor.js"}
-  %body
-    #wrapper
-      #headwrap
-        #header
-          #logo 
-            %img{:src => "/images/vcor.jpeg"}
-          %h1 Vermont Center for Occupational Rehabilitation
-          #name
-            %p John Johansson, D.O.
-          #address
-            %p 67 Lincoln Street, Essex Junction, Vermont   05452
-            %p Tel 802-878-9700  Fax 802-878-9966
-        #nav
-          %ul
-            %li 
-              %a(href="/vcor") Home
-            %li 
-              %a(href="/vcor/directions") Directions
-            %li 
-              %a(href="/vcor/services") Philosphy & Treatments
-            %li 
-              %a(href="/vcor/staff") Staff
-            %li 
-              %a(href="/vcor/forms") Patients
-            %li 
-              %a(href="/vcor/articles") Articles
-      #content
-        =yield 
-      #strut
-      #footer
-
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+    %link{href: "/stylesheets/bootstrap.min.css", rel: "stylesheet"}
+    %link{href: "/stylesheets/vcor.css", rel: "stylesheet"}
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    / Le styles
+    %script{type: "text/javascript", src: "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"}
+    %script{type: "text/javascript", src: "https://code.jquery.com/jquery-1.10.2.min.js"}
+    %script{type: "text/javascript", src: "/javascripts/bootstrap.min.js"}
+    %body
+    .navbar.navbar-default{role: "navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+            %span{class: "sr-only"} Toggle navigation
+            %span{class: "icon-bar"}
+            %span{class: "icon-bar"}
+            %span{class: "icon-bar"}
+          %a{class: "navbar-brand", href: "/vcor"} Home
+        -# Collect the nav links, forms, and other content for toggling
+        .navbar-collapse.collapse
+          %ul.nav.navbar-nav
+            %li{:class => @submenu == 'directions' && "active"}
+              %a{href: "/vcor/directions"} Directions
+            %li{:class => @submenu == 'services' && "active"}
+              %a{href: "/vcor/services"} Treatments
+            %li{:class => @submenu == 'staff' && "active"}
+              %a{href: "/vcor/staff"} Staff
+            %li{:class => @submenu == 'patients' && "active"}
+              %a{href: "/vcor/patients"} Patients
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                Forms 
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  %a{href: "/vcor/render_form/new_patient_information.pdf"} New Patient Information
+                %li
+                  %a{href: "/vcor/render_form/new_patient_referral.pdf"} New Patient Referral
+                %li
+                  %a{href: "/vcor/render_form/new_patient_history.pdf"} New Patient History
+                %li
+                  %a{href: "/vcor/render_form/PCP_info.pdf"} Primary Care Provider Information
+            %li{:class => @submenu == 'articles' && "active"}
+              %a{href: "/vcor/articles"} Articles
+            %li{:class => @submenu == 'faq' && "active"}
+              %a{href: "/vcor/faq"} FAQ
+    .container
+      .jumbotron#head
+        %img{:src => "/images/vcor.jpeg"}
+        %h2#inl Vermont Center for Occupational Rehabilitation
+        %br/
+        %h2.pull-left.text-center John Johansson, D.O.
+        %address.pull-right
+          %br/
+          67 Lincoln Street
+          %br/
+          Essex Junction, Vermont   05452
+          %br/
+          Phone: 802-878-9700&nbsp;&nbsp;&nbsp;Fax: 802-878-9966
+      %hr/
+      .row.marketing
+        .col-lg-12
+          = yield
