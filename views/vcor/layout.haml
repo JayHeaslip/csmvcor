@@ -46,8 +46,23 @@
                   %a{href: "/vcor/render_form/new_patient_history.pdf"} New Patient History
                 %li
                   %a{href: "/vcor/render_form/PCP_info.pdf"} Primary Care Provider Information
-            %li{:class => @submenu == 'articles' && "active"}
-              %a{href: "/vcor/articles"} Articles
+            %li.dropdown{:class => @submenu == 'articles' && "active"}
+              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                Articles
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  %a{href: "/vcor/articles/pt"} Physical Therapy
+                %li
+                  %a{href: "/vcor/articles/massage"} Massage Therapy
+                %li
+                  %a{href: "/vcor/articles/om"} Osteopathic Medicine
+                %li
+                  %a{href: "/vcor/articles/pool"} Pool Therapy
+                %li
+                  %a{href: "/vcor/articles/nutrition"} Nutrition
+                %li
+                  %a{href: "/vcor/articles/lifestyle"} Lifestyle
             %li{:class => @submenu == 'faq' && "active"}
               %a{href: "/vcor/faq"} FAQ
     .container

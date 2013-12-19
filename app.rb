@@ -36,9 +36,14 @@ get '/:site' do
   end
 end
 
-get '/:site/articles' do 
-  @submenu = "articles"
-  haml :"#{params[:site]}/articles", :layout => :"#{params[:site]}/layout"
+get '/:site/services' do 
+  @submenu = "services"
+  haml :"#{params[:site]}/services", :layout => :"#{params[:site]}/layout"
+end
+
+get '/:site/staff' do 
+  @submenu = "staff"
+  haml :"#{params[:site]}/staff", :layout => :"#{params[:site]}/layout"
 end
 
 get '/:site/patients' do 
@@ -54,19 +59,14 @@ get '/:site/render_form/:form' do
   send_file "public/files/#{params[:form]}", :type => 'application/pdf'
 end
 
-get '/:site/services' do 
-  @submenu = "services"
-  haml :"#{params[:site]}/services", :layout => :"#{params[:site]}/layout"
-end
-
-get '/:site/staff' do 
-  @submenu = "staff"
-  haml :"#{params[:site]}/staff", :layout => :"#{params[:site]}/layout"
-end
-
 get '/:site/faq' do 
   @submenu = "faq"
   haml :"#{params[:site]}/faq", :layout => :"#{params[:site]}/layout"
+end
+
+get '/:site/articles/:category' do 
+  @submenu = "articles"
+  haml :"#{params[:site]}/articles/#{params[:category]}", :layout => :"#{params[:site]}/layout"
 end
 
 get '/:site/contact' do
