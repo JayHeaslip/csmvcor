@@ -12,4 +12,5 @@ address {
 
 .jumbotron {
   padding-bottom: 100px;
+  border-bottom: 2px solid #D3D4FE;
 }

@@ -26,7 +26,7 @@
         .navbar-collapse.collapse
           %ul.nav.navbar-nav
             %li{:class => @submenu == 'directions' && "active"}
-              %a{href: "/vcor/directions"} Directions
+              %a{href: "/vcor/directions"} Directions/Contact
             %li{:class => @submenu == 'services' && "active"}
               %a{href: "/vcor/services"} Treatments
             %li{:class => @submenu == 'staff' && "active"}
@@ -69,8 +69,7 @@
       .jumbotron#head
         %img{:src => "/images/vcor.jpeg"}
         %h2#inl Vermont Center for Occupational Rehabilitation
-        %br/
-        %h2.pull-left.text-center John Johansson, D.O.
+        %h3.pull-left.text-center John Johansson, D.O.
         %address.pull-right
           %br/
           67 Lincoln Street
@@ -78,7 +77,9 @@
           Essex Junction, Vermont   05452
           %br/
           Phone: 802-878-9700&nbsp;&nbsp;&nbsp;Fax: 802-878-9966
-      %hr/
+      - if @message	  
+        .alert.alert-success
+          = @message
       .row.marketing
         .col-lg-12
           = yield

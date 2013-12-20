@@ -1,28 +1,35 @@
 require 'rubygems'
 require 'sinatra'
 require 'haml'
-require 'pp'
-##require 'sinatra/base'
-##require 'rack-flash'
+require 'mail'
+require 'postmark'
 
-##class MyApp < Sinatra::Base
+configure do
+  enable :sessions
+  set :session_secret, ENV['SESSION_SECRET']
+end
 
-enable :sessions
-##use Rack::Flash
-
-set :prawn, { :page_layout => :landscape }
+helpers do 
+  def flash=(message)
+    session[:flash_message] = message
+  end
+end
+  
+before do
+  @submenu = request.path.split("/")[-1]
+  @message = session[:flash_message]
+  session[:flash_message] = nil
+end
 
 get '/' do 
   haml :'vcor/index', :layout => :'vcor/layout'
 end
 
 get '/vcor/index' do 
-  @submenu = "index"
   haml :'vcor/index', :layout => :'vcor/layout'
 end
 
 get '/:site/directions' do 
-  @submenu = "directions"
   haml :directions, :layout => :"#{params[:site]}/layout"
 end
 
@@ -37,17 +44,14 @@ get '/:site' do
 end
 
 get '/:site/services' do 
-  @submenu = "services"
   haml :"#{params[:site]}/services", :layout => :"#{params[:site]}/layout"
 end
 
 get '/:site/staff' do 
-  @submenu = "staff"
   haml :"#{params[:site]}/staff", :layout => :"#{params[:site]}/layout"
 end
 
 get '/:site/patients' do 
-  @submenu = "patients"
   haml :"#{params[:site]}/patients", :layout => :"#{params[:site]}/layout"
 end
 
@@ -60,12 +64,10 @@ get '/:site/render_form/:form' do
 end
 
 get '/:site/faq' do 
-  @submenu = "faq"
   haml :"#{params[:site]}/faq", :layout => :"#{params[:site]}/layout"
 end
 
 get '/:site/articles/:category' do 
-  @submenu = "articles"
   haml :"#{params[:site]}/articles/#{params[:category]}", :layout => :"#{params[:site]}/layout"
 end
 
@@ -74,26 +76,7 @@ get '/:site/contact' do
 end
 
 post '/:site/contact' do
-  name = params[:name]
-  mail = params[:mail]
-  subject = params[:subject]
-  body = params[:body]     
-  Pony.mail(:to => 'jayheaslip@gmail.com', 
-            :from => mail, 
-            :subject => subject, 
-            :body => body,
-            :via => :smtp,
-            :via_options => { 
-              :address              => 'smtp.gmail.com', 
-              :port                 => '587', 
-              :enable_starttls_auto => true, 
-              :user_name            => 'jayheaslip', 
-              :password             => '--------',
-              :authentication       => :plain, 
-              :domain               => 'localhost.localdomain'
-            }
-            )
-  flash[:notice] = "Email was sent."
+  self.flash = "Your email has been sent!"
   redirect "#{params[:site]}/index"
 end
 

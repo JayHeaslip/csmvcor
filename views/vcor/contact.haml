@@ -1,16 +1,20 @@
-%form{ :action => "", :method => "post"}
-  %fieldset
-    %ol
-      %li
-        %label{:for => "name"} Name:
-        %input{:type => "text", :name => "name", :class => "text"}
-      %li
-        %label{:for => "mail"} email:
-        %input{:type => "text", :name => "mail", :class => "text"}
-      %li
-        %label{:for => "subject"} subjectl:
-        %input{:type => "text", :name => "subject", :class => "text"}
-      %li
-        %label{:for => "body"} Message:
-        %textarea{:name => "body"}
-    %input{:type => "submit", :value => "Send", :class => "button"}
+%form.form-horizontal{role: "form", action: "", method: "post"}
+  .form-group
+    %label.col-sm-2.control-label{for: "inputName"} Name
+    .col-sm-10
+      %input#inputName.form-control{placeholder: "Name", type: "name"}
+  .form-group
+    %label.col-sm-2.control-label{for: "inputEmail"} Email
+    .col-sm-10
+      %input#inputEmail.form-control{placeholder: "Email", type: "email"}
+  .form-group
+    %label.col-sm-2.control-label{for: "inputSubject"} Subject
+    .col-sm-10
+      %input#inputSubject.form-control{placeholder: "Subject", type: "subject"}
+  .form-group
+    %label.col-sm-2.control-label{for: "inputMessage"} Message
+    .col-sm-10
+      %textarea#inputMessage.form-control{rows: 5, placeholder: "Message", type: "message"}
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      %button.btn.btn-default{type: "submit"} Send
