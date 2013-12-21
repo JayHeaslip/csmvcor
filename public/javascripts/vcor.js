@@ -16,3 +16,11 @@ function initialize() {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+var metrics = [
+    [ '#inputName',  'presence', 'Cannot be empty' ],
+    [ '#inputEmail', 'presence', 'Cannot be empty' ],
+    [ '#inputSubject', 'presence', 'Cannot be empty' ],
+    [ '#inputMessage', 'presence', 'Cannot be empty' ],
+];
+$( "#contact" ).nod( metrics );

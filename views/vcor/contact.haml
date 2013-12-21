@@ -1,20 +1,30 @@
-%form.form-horizontal{role: "form", action: "", method: "post"}
+%p Send us an email:
+
+%form#contact.form-horizontal{role: "form", action: "", method: "post"}
   .form-group
     %label.col-sm-2.control-label{for: "inputName"} Name
     .col-sm-10
-      %input#inputName.form-control{placeholder: "Name", type: "name"}
+      %input#inputName.form-control{placeholder: "Name", name: "name"}
   .form-group
     %label.col-sm-2.control-label{for: "inputEmail"} Email
     .col-sm-10
-      %input#inputEmail.form-control{placeholder: "Email", type: "email"}
+      %input#inputEmail.form-control{placeholder: "Email", name: "email"}
   .form-group
     %label.col-sm-2.control-label{for: "inputSubject"} Subject
     .col-sm-10
-      %input#inputSubject.form-control{placeholder: "Subject", type: "subject"}
+      %input#inputSubject.form-control{placeholder: "Subject", name: "subject"}
   .form-group
     %label.col-sm-2.control-label{for: "inputMessage"} Message
     .col-sm-10
-      %textarea#inputMessage.form-control{rows: 5, placeholder: "Message", type: "message"}
+      %textarea#inputMessage.form-control{rows: 5, placeholder: "Message", name: "message"}
   .form-group
     .col-sm-offset-2.col-sm-10
       %button.btn.btn-default{type: "submit"} Send
+-# :javascript
+-#   var metrics = [
+-#     [ '#inputName',  'presence', 'Cannot be empty' ],
+-#     [ '#inputEmail', 'presence', 'Cannot be empty' ],
+-#     [ '#inputSubject', 'presence', 'Cannot be empty' ],
+-#     [ '#inputMessage', 'presence', 'Cannot be empty' ],
+-#   ];
+-#   $( "#contact" ).nod( metrics );

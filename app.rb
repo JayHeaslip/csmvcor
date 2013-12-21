@@ -2,23 +2,43 @@ require 'rubygems'
 require 'sinatra'
 require 'haml'
 require 'mail'
-require 'postmark'
 
 configure do
   enable :sessions
   set :session_secret, ENV['SESSION_SECRET']
+  Mail.defaults do
+    delivery_method :smtp, {
+      address: 'smtp.sendgrid.net',
+      port: 587,
+      domain: 'heroku.com',
+      user_name: ENV['SENDGRID_USERNAME'],
+      password: ENV['SENDGRID_PASSWORD'],
+      authentication: 'plain',
+      enable_starttls_auto: true
+    }
+  end
 end
 
 helpers do 
   def flash=(message)
     session[:flash_message] = message
   end
+
+  def flash_error=(message)
+    session[:flash_error] = message
+  end
+
+  def h(text)
+    Rack::Utils.escape_html(text)
+  end
 end
   
 before do
   @submenu = request.path.split("/")[-1]
   @message = session[:flash_message]
+  @error_message = session[:flash_error]
   session[:flash_message] = nil
+  session[:flash_error] = nil
 end
 
 get '/' do 
@@ -76,7 +96,23 @@ get '/:site/contact' do
 end
 
 post '/:site/contact' do
-  self.flash = "Your email has been sent!"
-  redirect "#{params[:site]}/index"
+  from =  "#{h(params[:name])} <#{params[:email]}>"
+  subject = h(params[:subject])
+  body = h(params[:body])
+
+  begin
+    Mail.deliver do
+      from           from
+      to             'VCOR <jheaslip@comcast.net>'
+      subject        subject
+      body           body
+    end
+    self.flash = "Your email has been sent!"
+    redirect "#{params[:site]}/index"
+  rescue
+    self.flash_error = "There was a problem sending your email, please try again."
+      haml :'vcor/contact', :layout => :'vcor/layout'
+  end
+
 end
 

@@ -12,6 +12,7 @@
     %script{type: "text/javascript", src: "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"}
     %script{type: "text/javascript", src: "https://code.jquery.com/jquery-1.10.2.min.js"}
     %script{type: "text/javascript", src: "/javascripts/bootstrap.min.js"}
+    %script{type: "text/javascript", src: "/javascripts/nod.min.js"}
     %body
     .navbar.navbar-default{role: "navigation"}
       .container
@@ -26,7 +27,9 @@
         .navbar-collapse.collapse
           %ul.nav.navbar-nav
             %li{:class => @submenu == 'directions' && "active"}
-              %a{href: "/vcor/directions"} Directions/Contact
+              %a{href: "/vcor/directions"} Directions
+            %li{:class => @submenu == 'contact' && "active"}
+              %a{href: "/vcor/contact"} Contact
             %li{:class => @submenu == 'services' && "active"}
               %a{href: "/vcor/services"} Treatments
             %li{:class => @submenu == 'staff' && "active"}
@@ -80,6 +83,9 @@
       - if @message	  
         .alert.alert-success
           = @message
+      - if @error_message	  
+        .alert.alert-danger
+          = @error_message
       .row.marketing
         .col-lg-12
           = yield
