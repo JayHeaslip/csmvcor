@@ -2,10 +2,16 @@ require 'rubygems'
 require 'sinatra'
 require 'haml'
 require 'mail'
+require 'logger'
+require 'resolv'
 
 configure do
   enable :sessions
   set :session_secret, ENV['SESSION_SECRET']
+
+  LOG = Logger.new(STDOUT)
+  LOG.level = Logger::INFO
+
   Mail.defaults do
     delivery_method :smtp, {
       address: 'smtp.sendgrid.net',
@@ -20,24 +26,57 @@ configure do
 end
 
 helpers do 
-  def flash=(message)
-    session[:flash_message] = message
+  def flash_info=(message)
+    session[:flash_info] = message
   end
 
   def flash_error=(message)
     session[:flash_error] = message
   end
 
-  def h(text)
-    Rack::Utils.escape_html(text)
+  def validate(params)
+    errors = {}
+    
+    [:name, :email, :subect, :message].each{|key| params[key] = (params[key] || "").strip }
+
+    errors[:name]    = "This field is required" unless given? params[:name]
+
+    if given? params[:email]
+      errors[:email]   = "Please enter a valid email address" unless valid_email? params[:email]
+    else
+      errors[:email]   = "This field is required"
+    end
+
+    errors[:subject] = "This field is required" unless given? params[:subject]
+    
+    errors[:message] = "This field is required" unless given? params[:message]
+
+    errors
   end
+
+  def valid_email?(email)
+    if email =~ /^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$/
+      domain = email.match(/\@(.+)/)[1]
+      Resolv::DNS.open do |dns|
+        @mx = dns.getresources(domain, Resolv::DNS::Resource::IN::MX)
+      end
+      @mx.size > 0 ? true : false
+    else
+      false
+    end
+  end
+
+  def given? field
+    !field.empty?
+  end
+
 end
   
 before do
   @submenu = request.path.split("/")[-1]
-  @message = session[:flash_message]
-  @error_message = session[:flash_error]
-  session[:flash_message] = nil
+  @flash_info  = session[:flash_info]
+  @flash_error = session[:flash_error]
+  session[:flash_info] = nil
   session[:flash_error] = nil
 end
 
@@ -92,27 +131,39 @@ get '/:site/articles/:category' do
 end
 
 get '/:site/contact' do
+  @errors = {}
   haml :"#{params[:site]}/contact", :layout => :"#{params[:site]}/layout"
 end
 
 post '/:site/contact' do
-  from =  "#{h(params[:name])} <#{params[:email]}>"
-  subject = h(params[:subject])
-  body = h(params[:body])
+  @errors = validate(params)
 
-  begin
-    Mail.deliver do
-      from           from
-      to             'VCOR <jheaslip@comcast.net>'
-      subject        subject
-      body           body
-    end
-    self.flash = "Your email has been sent!"
+  @name = params[:name]
+  @email = params[:email]
+  @subject = params[:subject]
+  @message = params[:message]
+
+  if @errors.empty?
+    from =  "#@name <#@email>"
+    subject = @subject
+    body = @message
+    begin
+      Mail.deliver do
+        from           from
+        to             'VCOR <jheaslip@comcast.net>'
+        subject        subject
+        body           body
+      end
+      self.flash_info = "Your email has been sent!"
+    rescue Exception => e
+      puts e.message
+      LOG.error e.message
+      LOG.error e.backtrace.join('/n')
+      self.flash_error = "There was a problem sending your email, please try again later."
+    end  
     redirect "#{params[:site]}/index"
-  rescue
-    self.flash_error = "There was a problem sending your email, please try again."
-      haml :'vcor/contact', :layout => :'vcor/layout'
+  else
+    haml :'vcor/contact', :layout => :'vcor/layout'
   end
-
 end
 

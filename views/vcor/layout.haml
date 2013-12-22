@@ -1,4 +1,4 @@
-!!!
+!!! 5
 %html
   %head 
     %title Vermont Center for Occupational Rehabilitation
@@ -80,12 +80,12 @@
           Essex Junction, Vermont   05452
           %br/
           Phone: 802-878-9700&nbsp;&nbsp;&nbsp;Fax: 802-878-9966
-      - if @message	  
+      - if @flash_info
         .alert.alert-success
-          = @message
-      - if @error_message	  
+          = @flash_info
+      - if @flash_error
         .alert.alert-danger
-          = @error_message
+          = @flash_error
       .row.marketing
         .col-lg-12
           = yield

@@ -1,30 +1,27 @@
 %p Send us an email:
 
 %form#contact.form-horizontal{role: "form", action: "", method: "post"}
-  .form-group
-    %label.col-sm-2.control-label{for: "inputName"} Name
+  .form-group{class: @errors[:name] && 'has-error'}
+    %label.col-sm-2.control-label{for: "inputName"} Your name
     .col-sm-10
-      %input#inputName.form-control{placeholder: "Name", name: "name"}
-  .form-group
-    %label.col-sm-2.control-label{for: "inputEmail"} Email
+      %input#inputName.form-control{placeholder: "Name", name: "name", value: @name}
+      .help-block= @errors[:name]
+  .form-group{class: @errors[:email] && 'has-error'}
+    %label.col-sm-2.control-label{for: "inputEmail"} Your email
     .col-sm-10
-      %input#inputEmail.form-control{placeholder: "Email", name: "email"}
-  .form-group
+      %input#inputEmail.form-control{placeholder: "Email", name: "email", value: @email}
+      .help-block= @errors[:email]
+  .form-group{class: @errors[:subject] && 'has-error'}
     %label.col-sm-2.control-label{for: "inputSubject"} Subject
     .col-sm-10
-      %input#inputSubject.form-control{placeholder: "Subject", name: "subject"}
-  .form-group
+      %input#inputSubject.form-control{placeholder: "Subject", name: "subject", value: @subject}
+      .help-block= @errors[:subject]
+  .form-group{class: @errors[:message] && 'has-error'}
     %label.col-sm-2.control-label{for: "inputMessage"} Message
     .col-sm-10
       %textarea#inputMessage.form-control{rows: 5, placeholder: "Message", name: "message"}
+        = @message      
+      .help-block= @errors[:message]
   .form-group
     .col-sm-offset-2.col-sm-10
       %button.btn.btn-default{type: "submit"} Send
--# :javascript
--#   var metrics = [
--#     [ '#inputName',  'presence', 'Cannot be empty' ],
--#     [ '#inputEmail', 'presence', 'Cannot be empty' ],
--#     [ '#inputSubject', 'presence', 'Cannot be empty' ],
--#     [ '#inputMessage', 'presence', 'Cannot be empty' ],
--#   ];
--#   $( "#contact" ).nod( metrics );
