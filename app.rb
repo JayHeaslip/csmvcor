@@ -4,6 +4,7 @@ require 'haml'
 require 'mail'
 require 'logger'
 require 'resolv'
+require 'newrelic_rpm'
 
 configure do
   enable :sessions
