@@ -98,8 +98,6 @@ get '/:site' do
     haml :'csm/index', :layout => :'csm/layout'
   elsif params[:site] == 'vcor'
     haml :'vcor/index', :layout => :'vcor/layout'
-  else
-    haml :index
   end
 end
 
