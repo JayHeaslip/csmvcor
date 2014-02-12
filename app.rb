@@ -149,7 +149,7 @@ post '/:site/contact' do
     begin
       Mail.deliver do
         from           from
-        to             'VCOR <jheaslip@comcast.net>'
+        to             "VCOR <#{ENV['VCOR_EMAIL']}>"
         subject        subject
         body           body
       end
