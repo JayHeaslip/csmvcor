@@ -11,7 +11,7 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     / Le styles
     %script{type: "text/javascript", src: "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"}
-    %script{type: "text/javascript", src: "https://code.jquery.com/jquery-1.10.2.min.js"}
+    %script{type: "text/javascript", src: "https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"}
     %script{type: "text/javascript", src: "/javascripts/bootstrap.min.js"}
     %script{type: "text/javascript", src: "/javascripts/nod.min.js"}
     %body
@@ -48,8 +48,8 @@
                   %a{href: "/vcor/render_form/new_patient_referral.pdf"} New Patient Referral
                 %li
                   %a{href: "/vcor/render_form/new_patient_history.pdf"} New Patient History
-                %li
-                  %a{href: "/vcor/render_form/PCP_info.pdf"} Primary Care Provider Information
+                %li#rackcard
+                  %a{href: "#", :'data-toggle' => "modal"} Primary Care Provider Information
             %li.dropdown{:class => @submenu == 'articles' && "active"}
               %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
                 Articles
@@ -93,3 +93,19 @@
       .row.marketing
         .col-lg-12
           = yield
+      #myModal.modal{"aria-hidden" => "true", style: "display: none;"}
+        .modal-dialog
+          .modal-content
+            .modal-header
+              %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+            .modal-body{style: "width: 832px"}
+              %img{src: "/images/rack_card_front.jpg", style: "float:left;"}/
+              %img{src: "/images/rack_card_back.jpg", style: "float:left;"}/
+            .modal-footer
+      %script{type: "text/javascript"}
+        $(document).ready(function() {
+        $('#rackcard').click(function(){
+        $('#myModal').modal({show:true})
+        });
+        });
+

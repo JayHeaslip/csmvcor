@@ -121,6 +121,10 @@ get '/:site/render_form/:form' do
   send_file "public/files/#{params[:form]}", :type => 'application/pdf'
 end
 
+get '/:site/render_img/:img' do 
+  send_file "public/files/#{params[:img]}", :type => 'image/jpeg'
+end
+
 get '/:site/faq' do 
   haml :"#{params[:site]}/faq", :layout => :"#{params[:site]}/layout"
 end
