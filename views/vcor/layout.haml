@@ -91,7 +91,7 @@
         .alert.alert-danger
           = @flash_error
       .row.marketing
-        .col-lg-12
+        .col-md-12
           = yield
       #myModal.modal{"aria-hidden" => "true", style: "display: none;"}
         .modal-dialog
@@ -102,10 +102,10 @@
               %img{src: "/images/rack_card_front.jpg", style: "float:left;"}/
               %img{src: "/images/rack_card_back.jpg", style: "float:left;"}/
             .modal-footer
-      %script{type: "text/javascript"}
+      :javascript
         $(document).ready(function() {
-        $('#rackcard').click(function(){
-        $('#myModal').modal({show:true})
-        });
+          $('#rackcard').click(function(){
+            $('#myModal').modal({show:true})
+          });
         });
 

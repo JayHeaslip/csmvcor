@@ -1,12 +1,73 @@
-%p
-  Dr. Johansson is the founder and medical director of the Vermont Center for Occupational Rehabilitation.  He is a member of the American Association of Orthopaedic Medicine, the American Osteopathic Association, the American Academy of Pain Management, and the American Academy of Manual Medicine. 
-%p
-  Treating both sub-acute injuries and chronic pain conditions, Dr. Johansson and the VCOR staff assist patients with recovering from work injuries by offering individualized and integrated treatment plans.
-%p
-  With the goal of restoring as much function as possible, combinations of the following modalities are utilized: physical therapy, ergonomic education, muscular re-education, work simulation, work conditioning,  massage therapy, aquatic therapy, biofeedback and a variety of pain management strategies. A home program of stretching, exercise and self-care strategies is developed for each patient to support a continuation of the treatment independently after completing their program at VCOR. Work site evaluations by an ergonomic specialist are also available.
-%p
-  Weekly staff meetings attended by all VCOR staff ensure a coordinated effort during treatment.  Nurse case managers are invited to attend these meetings in person or by telephone conference.
-%p
-  Champlain Sports Medicine is located on the 2nd floor. Click 
-  %a{href: '/csm'}here
-  to go to the Champlain Sports Medicine website.
+#quote.carousel.slide
+  / class of slide for animation
+  .carousel-inner
+    .item.active
+      / class of active since it's the first item
+      %img{style: "float:left;margin-right: 10px;", alt: "", src: "/images/freedom-1161243-s.jpg"}/
+      %blockquote
+        %p Your present circumstances don't determine where you can go; they merely determine where you start.
+        %footer Niño  Quebin
+    .item
+      %img{style: "float:left;margin-right: 10px;", alt: "", src: "/images/the-sunset-behind-the-mountains-in-turkey-1432031-s.jpg"}/
+      %blockquote
+        %p We are what we repeatedly do. Excellence, therefore, is not an act but a habit.
+        %footer Aristotle
+    .item
+      %img{style: "float:left;margin-right: 10px;", alt: "", src: "/images/gull-in-flight-sunset-light-1435763-s.jpg"}/
+      %blockquote
+        %p Nothing will ever be attempted if all possible objections must first be overcome.
+        %footer Samuel Johnson
+    .item
+      %img{style: "float:left;margin-right: 10px;", alt: "", src: "/images/everystockphoto_176610_tn.jpg"}/
+      %blockquote
+        %p Knowing is not enough; we must apply. Willing is not enough; we must do.
+        %footer Johann Wolfgang von Goethe 
+    .item
+      %img{style: "float:left;margin-right: 10px;", alt: "", src: "/images/everystockphoto_162609_tn.jpg"}/
+      %blockquote
+        %p Better to light one small candle than to curse the darkness.” 
+        %footer Chinese Proverb
+    .item
+      %img{style: "float:left;margin-right: 10px;", alt: "", src: "/images/wave.jpg"}/
+      %blockquote
+        %p The starting point of all achievement is desire. 
+        %footer Napolean Hill
+
+.col-md-8
+  %p{style: "margin-top: 20px;"}Dr. Johansson is the founder and medical director of the Vermont Center for Occupational Rehabilitation.  He is a member of the American Association of Orthopaedic Medicine, the American Osteopathic Association, the American Academy of Pain Management, and the American Academy of Manual Medicine. 
+  %p
+    Treating both sub-acute injuries and chronic pain conditions, Dr. Johansson and the VCOR staff assist patients with recovering from work injuries by offering individualized and integrated treatment plans.
+  %p
+    With the goal of restoring as much function as possible, combinations of the following modalities are utilized: physical therapy, ergonomic education, muscular re-education, work simulation, work conditioning,  massage therapy, aquatic therapy, biofeedback and a variety of pain management strategies. A home program of stretching, exercise and self-care strategies is developed for each patient to support a continuation of the treatment independently after completing their program at VCOR. Work site evaluations by an ergonomic specialist are also available.
+  %p
+    Weekly staff meetings attended by all VCOR staff ensure a coordinated effort during treatment.  Nurse case managers are invited to attend these meetings in person or by telephone conference.
+  %p
+    Champlain Sports Medicine is located on the 2nd floor. Click 
+    %a{href: '/csm'}here
+    to go to the Champlain Sports Medicine website.
+.col-md-4
+  %h5{style: "margin-top: 20px;"}Dr. Johansson is a member of:
+  %p 
+    %a{href: "http://www.osteopathic.org/"}American Osteopathic Association
+  %p
+    %a{href: "http://www.aaomed.org/"}American Association of Orthopedic Medicine
+  %p
+    %a{href: "http://www.painmed.org/"}American Academy of Pain Medicine
+  %p
+    %a{href: "http://netforum.avectra.com/eweb/StartPage.aspx?Site=AAO/"}American Academy of Osteopathic Medicine
+  %p
+    %a{href: "http://www.vtosteopathic.org/"}Vermont State Association of Osteopathic Physicians & Surgeons
+  %p
+    %a{href: "http://www.aoasm.org/index.cfm/"}American Academy of Osteopathic Sports Medicine
+  %h5{style: "margin-top: 20px;"}Associations endorsed by Dr. Johansson, CSM & VCOR:
+  %p
+    %a{href: "http://www.functionalmedicine.org/"}Institute for Functional Medicine 
+  %p
+    %a{href: "http://www.vitasearch.com/"}Current Research in Nutrition and Integrative Medicine
+  %p
+    %a{href: "http://www.imconsortium.org/"}The Consortium of Academic Health Centers for Integrative Medicine
+
+:javascript
+  $(document).ready(function(){
+    $('.carousel').carousel({ interval: 10000});
+  })
