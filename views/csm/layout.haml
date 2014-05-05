@@ -1,38 +1,54 @@
-!!!
+!!! 5
 %html
   %head 
     %title Champlain Sports Medicine
-    %link(rel="stylesheet" href="http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css")
-    %link(rel="stylesheet" href="../stylesheets/vcor.css")
-    %script{:type => "text/javascript", :src => "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"}
-    %script{:type => "text/javascript", :src => "javascripts/vcor.js"}
-  %body
-    #wrapper
-      #headwrap
-        #header
-          #logo 
-          %h1 Champlain Sports Medicine
-          #name
-            %p John Johansson, D.O.
-          #address
-            %p 67 Lincoln Street, Essex Junction, Vermont   05452
-            %p Tel 802-878-1003
-        #nav
-          %ul
-            %li 
-              %a(href="/csm") Home
-            %li 
-              %a(href="/csm/directions") Directions
-            %li 
-              %a(href="/csm/services") Services
-            %li 
-              %a(href="/csm/staff") Staff
-            %li 
-              %a(href="/csm/forms") Patients
-            %li 
-              %a(href="/csm/articles") Articles
-      #content
-        =yield 
-      #strut
-      #footer
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+    %link(href='http://fonts.googleapis.com/css?family=Open+Sans|Roboto+Condensed' rel='stylesheet' type='text/css')
+    %link{href: "/stylesheets/bootstrap.min.css", rel: "stylesheet"}
+    %link{href: "/stylesheets/vcor.css", rel: "stylesheet"}
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    / Le styles
+    %script{type: "text/javascript", src: "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"}
+    %script{type: "text/javascript", src: "https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"}
+    %script{type: "text/javascript", src: "/javascripts/bootstrap.min.js"}
+    %script{type: "text/javascript", src: "/javascripts/nod.min.js"}
+    %body
+    .navbar.navbar-default{role: "navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+            %span{class: "sr-only"} Toggle navigation
+            %span{class: "icon-bar"}
+            %span{class: "icon-bar"}
+            %span{class: "icon-bar"}
+          %a{class: "navbar-brand", href: "/csm"} Champlain Sports Medicine
+        -# Collect the nav links, forms, and other content for toggling
+        .navbar-collapse.collapse
+          %ul.nav.navbar-nav
+    .container
+      .jumbotron#head
+        %img{:src => "/images/vcor.jpeg"}
+        %h2#inl{style: "margin-left: 15px"}Champlain Sports Medicine
+        %div
+          %h3.pull-left.text-center John Johansson, D.O.
+          %address.pull-right
+            %br/
+            67 Lincoln Street
+            %br/
+            Essex Junction, Vermont   05452
+            %br/
+            Phone: 802-878-1003
+            %br/
+            Hours: Mon-Fri: 8:00am-4:30pm
+      - if @flash_info
+        .alert.alert-success
+          = @flash_info
+      - if @flash_error
+        .alert.alert-danger
+          = @flash_error
+      .row.marketing
+        .col-md-12
+          = yield
 
